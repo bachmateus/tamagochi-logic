@@ -1,14 +1,5 @@
 import { Food } from "../consumable";
-
-export interface EatResponse {
-  status: boolean
-  isFoodAvailable: boolean
-  doesItFitTheBelly: boolean
-}
-
-export interface SetValuesRequest {
-  hungryness?: number
-}
+import { EatResponse, SetValuesRequest } from "./types/character.types";
 
 export abstract class Character {
   protected abstract type: string;

@@ -1,5 +1,5 @@
 import { Food } from "../consumable";
-import { EatResponse, SetValuesRequest } from "./types/character.types";
+import { SetValuesRequest } from "./types/character.types";
 
 export abstract class Character {
   protected abstract type: string;
@@ -9,43 +9,21 @@ export abstract class Character {
   protected abstract isHungry(): boolean;
   
   protected fatness: number = 0;
-  public foodAvailable: Food[];
-  protected abstract getFoodAvailable(): Food[];
+  protected foodsAvailable: Food[];
+  protected abstract createFoods(): Food[];
   
-  constructor(public name: string) {
-    this.foodAvailable = this.getFoodAvailable();
-  }
+  constructor(public name: string) {}
 
-  private setHungryness(amount: number) {
+  public setHungryness(amount: number) {
     this.hungryness += amount;
   }
 
-  private setFatness(amount: number) {
+  public setFatness(amount: number) {
     this.fatness += amount;
   }
 
   public setValues(values: SetValuesRequest) {
     if ('hungryness' in values) this.setHungryness(values.hungryness!);
-  }
-
-  public eat(food: Food): EatResponse {
-    const canEat = this.canEat(food);
-    if (canEat.status){
-      this.setHungryness(food.feedAmount);
-      this.setFatness(food.fatAmount);
-    }
-    return canEat;
-  }
-
-  private canEat(food: Food): EatResponse {
-    const isFoodAvailable = this.foodAvailable.some(foodItem => foodItem.id === food.id);
-    const doesItFitTheBelly = food.feedAmount + this.hungryness <= this.hungryBarValue;
-    const status = isFoodAvailable && doesItFitTheBelly;
-    return {
-      status,
-      isFoodAvailable,
-      doesItFitTheBelly
-    }
   }
 
   public getCharacterStatus() {
@@ -59,4 +37,9 @@ export abstract class Character {
       isHungry: this.isHungry(),
     }
   }
+
+  public getFoodsAvailable(): Food[] {
+    if (!this.foodsAvailable) this.foodsAvailable = this.createFoods();
+    return this.foodsAvailable; 
+  };
 }

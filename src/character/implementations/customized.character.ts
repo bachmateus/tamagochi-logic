@@ -13,14 +13,14 @@ export class CustomizedCharacter extends Character {
     this.type = props.type;
     this.hungryStartValue = props.hungryStartValue;
     this.hungryBarValue = props.hungryBarValue;
-    this.foodAvailable = props.foodAvailable;
+    this.foodsAvailable = props.foodAvailable;
   }
 
   protected isHungry(): boolean {
     return this.hungryness < this.hungryStartValue;
   }
-  protected getFoodAvailable(): Food[] {
-    return this.foodAvailable;
+  protected createFoods(): Food[] {
+    return this.foodsAvailable;
   }
 
 }

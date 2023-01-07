@@ -2,4 +2,7 @@
 export { Character } from './character';
 
 // implementations
-export { Dino } from '../character/implementations/dino';
+export { Dino } from './implementations/dino.character';
+
+//factory
+export { CharacterCreator } from './factory/character.factory';

@@ -1,6 +1,6 @@
-import { Food } from "../food";
+import { Consumable } from "../../consumable";
 
-export class Apple implements Food {
+export class Apple implements Consumable {
   id: number = 1;
   name: string = 'Apple';
   feedAmount: number = 2;

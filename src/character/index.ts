@@ -1,8 +1,3 @@
-// interface or abstract class
 export { Character } from './character';
-
-// implementations
-export { Dino } from './implementations/dino.character';
-
-//factory
-export { CharacterCreator } from './factory/character.factory';
+export { CharacterInstances } from './types/create-character.types';
+export { CharacterFactory } from './factory/character.factory';

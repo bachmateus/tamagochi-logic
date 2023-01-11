@@ -1,11 +1,9 @@
-import { CharacterCreator } from "./character";
-import { CharacterFoodConsume } from "./character/character-food-consume";
-import { CharacterInstances } from "./character/types/create-character.types";
+import { CharacterFactory, CharacterInstances } from "./character";
+// import { CharacterFactory, CharacterInstances } from "./character";
 import { PromptUI } from "./example/ui";
-import { ConsumeFactory } from "./interaction/consume/factory/consume-factory";
-import { ConsumeTypes } from "./interaction/consume/types/consume-types";
+import { ConsumeFactory, ConsumeTypes } from "./interaction/consume";
 
-const dino = CharacterCreator.createCharacter({
+const dino = CharacterFactory.createCharacter({
   characterName: 'Din',
   instanceName: CharacterInstances.DINO
 });

@@ -1,4 +1,4 @@
-import { Food } from "../consumable";
+import { Consumable } from "../consumable";
 import { SetValuesRequest } from "./types/character.types";
 
 export abstract class Character {
@@ -9,10 +9,12 @@ export abstract class Character {
   protected abstract isHungry(): boolean;
   
   protected fatness: number = 0;
-  protected foodsAvailable: Food[];
-  protected abstract createFoods(): Food[];
+  protected foodsAvailable: Consumable[];
+  protected abstract createFoods(): Consumable[];
   
-  constructor(public name: string) {}
+  constructor(public name: string) {
+    this.foodsAvailable = this.createFoods()
+  }
 
   public setHungryness(amount: number) {
     this.hungryness += amount;
@@ -38,7 +40,7 @@ export abstract class Character {
     }
   }
 
-  public getFoodsAvailable(): Food[] {
+  public getFoodsAvailable(): Consumable[] {
     if (!this.foodsAvailable) this.foodsAvailable = this.createFoods();
     return this.foodsAvailable; 
   };

@@ -1,10 +1,10 @@
 import { Character } from "../character"
-import { Food } from "../consumable"
+import { Consumable } from "../consumable"
 
 export interface UI {
   showStatusBar(character: Character): void
   showInteractionOptions(): void
-  showFoodMenu(foods: Food[]): void
+  showFoodMenu(foods: Consumable[]): void
 }
 
 export class PromptUI implements UI {
@@ -18,7 +18,7 @@ export class PromptUI implements UI {
     console.log('1 - Eat some food');
     this.enterBar();
   }
-  showFoodMenu(foods: Food[]): void {
+  showFoodMenu(foods: Consumable[]): void {
     console.log('***** FOOD MENU ****');
     foods.forEach( food => {
       console.log(`${food.id} - ${food.name} - ${food.feedAmount} - ${food.fatAmount}`)

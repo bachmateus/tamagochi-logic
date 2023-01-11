@@ -1,4 +1,4 @@
-import { Apple, Food, Hamburguer } from "../../consumable";
+import { Apple, Consumable, Hamburguer } from "../../consumable";
 import { Character } from "../character";
 
 export class Dino extends Character {
@@ -9,7 +9,8 @@ export class Dino extends Character {
     return (this.hungryness < this.hungryBarValue / 3);
   }
 
-  protected createFoods(): Food[] {
+  protected createFoods(): Consumable[] {
+    console.log('dasdasd')
     return [
       new Apple(),
       new Hamburguer(),

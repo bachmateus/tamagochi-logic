@@ -1,4 +1,4 @@
-import { Food } from "../../consumable";
+import { Consumable } from "../../consumable";
 import { Character } from "../character";
 import { CustomizedCharacterProps } from "../types/customized-character-props.type";
 
@@ -19,7 +19,7 @@ export class CustomizedCharacter extends Character {
   protected isHungry(): boolean {
     return this.hungryness < this.hungryStartValue;
   }
-  protected createFoods(): Food[] {
+  protected createFoods(): Consumable[] {
     return this.foodsAvailable;
   }
 
